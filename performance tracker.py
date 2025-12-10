@@ -1,16 +1,13 @@
-def averageMarks(students_data):
+def studentPerformance(students_data):
     results = {}
     for student, marks in students_data.items():
         avg = round(sum(marks) / len(marks), 2)
         results[student] = avg
 
-    return results
+    # Find top performer
+    top_student = max(results, key=results.get)
 
-def topPerformer(students_data):
-    averages = averageMarks(students_data)
-    top_student = max(averages, key=averages.get)
-    return f'Top Performer: "{top_student}"'
+    return results, f'Top Performer: "{top_student}"'
 
 students = {"John": [85, 78, 92], "Alice": [88, 79, 95], "Bob": [70, 75, 80]}
-print(averageMarks(students))
-print(topPerformer(students))
+print(studentPerformance(students))
